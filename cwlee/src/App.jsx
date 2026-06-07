@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { useFetch } from "./assets/hooks/useFetch";
 import Post from "./components/Post";
 import { ToastContext } from "./context/ToastContext";
+import Loading from "./components/Loading";
 
 export default function App() {
   const { loading, data, error, errorMessage } = useFetch('/posts');
@@ -19,7 +20,7 @@ export default function App() {
     }
   }, [error, errorMessage]);
 
-  if (loading) return <div>로딩 중...</div>;
+  if (loading) return <Loading />;
 
   return (
     <div>
